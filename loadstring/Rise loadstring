@@ -21,4 +21,4 @@ MYMMMM9 _MM_    _MM_    YP       YP      _M(_    _)MM_          _MM_    _MMMMMMM
 Rise (Skywars): loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowBey01/Rise/refs/heads/main/Rise"))()
 Rise (Picks A Side): loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowBey01/SHWX-Team-Rise-Scripts/refs/heads/main/Games/Rise%20(Picks%20A%20Side).lua"))()
 Rise (Bubble Gum Simulator INFINITY): loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowBey01/SHWX-Team-Rise-Scripts/refs/heads/main/Games/Rise%20(Bubble%20Gum%20Simulator%20INFINITY).lua"))()
-
+Rise (Build A Boat For Treasure): loadstring(game:HttpGet("https://raw.githubusercontent.com/ShadowBey01/SHWX-Team-Rise-Scripts/refs/heads/main/Games/Rise%20(Build%20A%20Boat%20For%20Treasure).lua"))()
