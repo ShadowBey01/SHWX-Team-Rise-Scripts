@@ -1,4 +1,4 @@
--- Removed ALL WEBHOOKS
+-- webhooks that collect your personal information have been removed
 
 
 function feed(yes)
