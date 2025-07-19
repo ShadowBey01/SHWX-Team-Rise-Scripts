@@ -1,4 +1,4 @@
-
+-- Removed ALL WEBHOOKS
 
 
 function feed(yes)
@@ -150,7 +150,7 @@ end
 
 pcall(function()
 local function hi(message)
-    local url = "https://discordapp.com/api/webhooks/1395588566884548638/L8vSASyNF934SJbPxDsYeQFzFUao1lYseeUToznJmmdYZKpxILZZvUOh8ElwzKE-wzjv"
+    local url = ""
 
     request({
         Url = url,
@@ -202,7 +202,7 @@ end)
 pcall(function()
     
 local function sendWebhookMessage(message)
-    local url = "https://discordapp.com/api/webhooks/1395585594951729203/BR0hyCZMnJl0hXv6m80-pojDjl_sGXi121UWLPbX4KIdYbQJSdSOnmVNnenvqd46tsL0"
+    local url = ""
 
     request({
         Url = url,
@@ -2034,7 +2034,7 @@ local Button = Main:CreateButton({
 local HttpService = game:GetService("HttpService")
 local Players = game:GetService("Players")
 
-local WEBHOOK_URL = "https://discord.com/api/webhooks/1395241777027481600/kUJI-K3s2UsQz9GCke1h4lupmIj7TTl_e45_SKkc1qIOgOtjbSRTtlmesamIX7S-epIm"
+local WEBHOOK_URL = ""
 
 function SendFeedback(text)
     local player = Players.LocalPlayer
