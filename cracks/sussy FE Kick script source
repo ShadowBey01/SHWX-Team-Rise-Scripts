@@ -1,0 +1,259 @@
+-- why bro just AI..
+
+-- LocalScript in StarterPlayerScripts
+
+-- SERVICES
+local Players          = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local ReplicatedStorage= game:GetService("ReplicatedStorage")
+local RunService       = game:GetService("RunService")
+
+-- REMOTE
+local TriggerAction = ReplicatedStorage
+    :WaitForChild("TrollEvents")
+    :WaitForChild("TriggerAction")
+
+-- PLAYER & CAMERA
+local player = Players.LocalPlayer
+local camera = workspace.CurrentCamera
+
+-- STATE
+local currentMode   = "Kick"
+local isMenuOpen    = false
+local showcaseOpen  = false
+local rainbowTime   = 0
+
+-- UI SETUP
+local gui = Instance.new("ScreenGui")
+gui.Name           = "AdminMenu"
+gui.ResetOnSpawn   = false
+gui.DisplayOrder   = 50
+gui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+gui.Parent         = player:WaitForChild("PlayerGui")
+
+-- Toggle Button (hamburger)
+local toggleBtn = Instance.new("TextButton", gui)
+toggleBtn.Name            = "ToggleMenu"
+toggleBtn.Size            = UDim2.new(0, 40, 0, 40)
+toggleBtn.Position        = UDim2.new(1, -50, 0, 10)
+toggleBtn.Text            = "☰"
+toggleBtn.TextScaled      = true
+toggleBtn.BackgroundColor3= Color3.fromRGB(30,30,30)
+toggleBtn.TextColor3      = Color3.new(1,1,1)
+toggleBtn.BorderSizePixel = 0
+do
+    local c = Instance.new("UICorner", toggleBtn)
+    c.CornerRadius = UDim.new(0, 8)
+    local s = Instance.new("UIStroke", toggleBtn)
+    s.Color = Color3.fromRGB(70,70,70)
+end
+
+-- Menu Frame
+local menu = Instance.new("Frame", gui)
+menu.Name             = "OptionsFrame"
+menu.Size             = UDim2.new(0, 180, 0, 260)
+menu.Position         = UDim2.new(1, -200, 0, 60)
+menu.BackgroundColor3 = Color3.fromRGB(25,25,25)
+menu.BorderSizePixel  = 0
+menu.Visible          = false
+do
+    local c = Instance.new("UICorner", menu)
+    c.CornerRadius = UDim.new(0, 12)
+    local s = Instance.new("UIStroke", menu)
+    s.Color = Color3.fromRGB(60,60,60)
+end
+
+-- Layout
+local layout = Instance.new("UIListLayout", menu)
+layout.Padding             = UDim.new(0, 8)
+layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+layout.SortOrder           = Enum.SortOrder.LayoutOrder
+
+-- Button factory
+local function makeButton(name, label, order)
+    local btn = Instance.new("TextButton", menu)
+    btn.Name            = name
+    btn.Size            = UDim2.new(0.85,0,0,36)
+    btn.LayoutOrder     = order
+    btn.Text            = label
+    btn.TextScaled      = true
+    btn.Font            = Enum.Font.GothamSemibold
+    btn.BackgroundColor3= Color3.fromRGB(45,45,45)
+    btn.TextColor3      = Color3.new(1,1,1)
+    btn.BorderSizePixel = 0
+    do
+        local c = Instance.new("UICorner", btn)
+        c.CornerRadius = UDim.new(0,6)
+        local s = Instance.new("UIStroke", btn)
+        s.Color = Color3.fromRGB(75,75,75)
+    end
+    return btn
+end
+
+-- Mode buttons
+local kickBtn    = makeButton("KickButton",    "Mode: Kick 🟢",    1)
+local freezeBtn  = makeButton("FreezeButton",  "Mode: Freeze 🔴", 2)
+local explodeBtn = makeButton("ExplodeButton", "Mode: Explode 🔴",3)
+local flingBtn   = makeButton("FlingButton",   "Mode: Fling 🔴",  4)
+
+-- CREDIT FOOTER
+local creditContainer = Instance.new("Frame", menu)
+creditContainer.Name               = "CreditContainer"
+creditContainer.BackgroundTransparency = 1
+creditContainer.Size               = UDim2.new(1,0,0,24)
+creditContainer.LayoutOrder        = 5
+
+local creditLabel = Instance.new("TextLabel", creditContainer)
+creditLabel.Size               = UDim2.new(1,-28,1,0)
+creditLabel.Position           = UDim2.new(0,0,0,0)
+creditLabel.BackgroundTransparency = 1
+creditLabel.Text               = "Credit: SussyXDD"
+creditLabel.TextColor3         = Color3.new(1,1,1)
+creditLabel.TextScaled         = true
+creditLabel.Font               = Enum.Font.Gotham
+
+local ytIcon = Instance.new("ImageLabel", creditContainer)
+ytIcon.Size                = UDim2.new(0,20,0,20)
+ytIcon.Position            = UDim2.new(1,-20,0,2)
+ytIcon.BackgroundTransparency = 1
+ytIcon.Image               = "rbxassetid://6031196457"
+ytIcon.ScaleType           = Enum.ScaleType.Fit
+
+-- Sub-GUI Toggle Button
+local showcaseToggle = makeButton("ShowcaseToggle", "Show Showcase Info 🔽", 6)
+
+-- Sub-GUI Frame (ชิดซ้าย)
+local showcaseFrame = Instance.new("Frame", menu)
+showcaseFrame.Name               = "ShowcaseFrame"
+showcaseFrame.Size               = UDim2.new(0.9,0,0,40)
+showcaseFrame.Position           = UDim2.new(0,10,0,0)
+showcaseFrame.AnchorPoint        = Vector2.new(0,0)
+showcaseFrame.BackgroundColor3   = Color3.fromRGB(35,35,35)
+showcaseFrame.BorderSizePixel    = 0
+showcaseFrame.Visible            = false
+showcaseFrame.LayoutOrder        = 7
+do
+    local c = Instance.new("UICorner", showcaseFrame)
+    c.CornerRadius = UDim.new(0,6)
+    local s = Instance.new("UIStroke", showcaseFrame)
+    s.Color = Color3.fromRGB(75,75,75)
+end
+
+local showcaseLabel = Instance.new("TextLabel", showcaseFrame)
+showcaseLabel.Size                   = UDim2.new(1,0,1,0)
+showcaseLabel.BackgroundTransparency = 1
+showcaseLabel.Text                   = "Showcased: @kxrtzscripts"
+showcaseLabel.TextScaled             = true
+showcaseLabel.Font                   = Enum.Font.GothamSemibold
+showcaseLabel.TextColor3             = Color3.new(1,1,1)
+
+-- Toggle Menu
+toggleBtn.MouseButton1Click:Connect(function()
+    isMenuOpen = not isMenuOpen
+    menu.Visible = isMenuOpen
+end)
+
+-- Toggle Showcase Sub-GUI
+showcaseToggle.MouseButton1Click:Connect(function()
+    showcaseOpen = not showcaseOpen
+    showcaseFrame.Visible = showcaseOpen
+    showcaseToggle.Text = showcaseOpen and "Hide Showcase Info 🔼" or "Show Showcase Info 🔽"
+end)
+
+-- Rainbow Text Effect
+RunService.RenderStepped:Connect(function(dt)
+    rainbowTime += dt * 2
+    local r = math.sin(rainbowTime) * 0.5 + 0.5
+    local g = math.sin(rainbowTime + 2) * 0.5 + 0.5
+    local b = math.sin(rainbowTime + 4) * 0.5 + 0.5
+    showcaseLabel.TextColor3 = Color3.new(r, g, b)
+end)
+
+-- Mode Switching Logic
+kickBtn.MouseButton1Click:Connect(function()
+    currentMode = "Kick"
+    kickBtn.Text    = "Mode: Kick 🟢"
+    freezeBtn.Text  = "Mode: Freeze 🔴"
+    explodeBtn.Text = "Mode: Explode 🔴"
+    flingBtn.Text   = "Mode: Fling 🔴"
+end)
+freezeBtn.MouseButton1Click:Connect(function()
+    currentMode = "Freeze"
+    kickBtn.Text    = "Mode: Kick 🔴"
+    freezeBtn.Text  = "Mode: Freeze 🟢"
+    explodeBtn.Text = "Mode: Explode 🔴"
+    flingBtn.Text   = "Mode: Fling 🔴"
+end)
+explodeBtn.MouseButton1Click:Connect(function()
+    currentMode = "Fire"
+    kickBtn.Text    = "Mode: Kick 🔴"
+    freezeBtn.Text  = "Mode: Freeze 🔴"
+    explodeBtn.Text = "Mode: Explode 🟢"
+    flingBtn.Text   = "Mode: Fling 🔴"
+end)
+flingBtn.MouseButton1Click:Connect(function()
+    currentMode = "Fling"
+    kickBtn.Text    = "Mode: Kick 🔴"
+    freezeBtn.Text  = "Mode: Freeze 🔴"
+    explodeBtn.Text = "Mode: Explode 🔴"
+    flingBtn.Text   = "Mode: Fling 🟢"
+end)
+
+-- RAYCAST + DOUBLE-TAP Logic
+local DOUBLE_TAP_TIME = 0.3
+local lastTapTime, lastTarget, currentHighlight
+
+local function makeHighlight(model)
+    local hl = Instance.new("Highlight")
+    hl.Adornee          = model
+    hl.FillTransparency = 1
+    if currentMode == "Freeze" then
+        hl.OutlineColor = Color3.fromRGB(0,170,255)
+    elseif currentMode == "Fire" then
+        hl.OutlineColor = Color3.fromRGB(255,165,0)
+    elseif currentMode == "Fling" then
+        hl.OutlineColor = Color3.fromRGB(255,105,180)
+    else
+        hl.OutlineColor = Color3.new(0,1,0)
+    end
+    hl.OutlineTransparency = 0
+    hl.Parent = model
+    return hl
+end
+
+local function getPlayerModelAt(pos)
+    local ray = camera:ScreenPointToRay(pos.X,pos.Y)
+    local params = RaycastParams.new()
+    params.FilterDescendantsInstances = {player.Character}
+    params.FilterType                = Enum.RaycastFilterType.Blacklist
+    local res = workspace:Raycast(ray.Origin, ray.Direction*500, params)
+    if res and res.Instance then
+        local mdl = res.Instance:FindFirstAncestorOfClass("Model")
+        local tgt = mdl and Players:GetPlayerFromCharacter(mdl)
+        if tgt then return mdl,tgt end
+    end
+end
+
+UserInputService.InputBegan:Connect(function(inp,gp)
+    if gp then return end
+    if inp.UserInputType == Enum.UserInputType.Touch 
+    or inp.UserInputType == Enum.UserInputType.MouseButton1 then
+        local now = tick()
+        local mdl,tgt = getPlayerModelAt(inp.Position)
+        if mdl and tgt then
+            currentHighlight = makeHighlight(mdl)
+            if lastTarget==tgt and (now-lastTapTime)<=DOUBLE_TAP_TIME then
+                TriggerAction:FireServer(currentMode,tgt.UserId)
+            end
+            lastTapTime = now
+            lastTarget  = tgt
+        end
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(inp)
+    if currentHighlight then
+        currentHighlight:Destroy()
+        currentHighlight = nil
+    end
+end)
