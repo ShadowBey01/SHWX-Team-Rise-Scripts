@@ -14,7 +14,7 @@ Our goal is to provide you with **the best scripting experience** and to always 
 
 ## 💻 Scripts
 
-[![PC & Mobile Supported Script](https://img.shields.io/badge/PC%20%26%20Mobile%20Supported-Script-blue?style=for-the-badge&logo=visualstudiocode)](#)
+[![PC & Mobile Supported Script](https://img.shields.io/badge/PC%20%26%20Mobile%20Supported-Script-blue?style=for-the-badge&logo=visualstudiocode)](https://github.com/ShadowBey01/SHWX-Team-Rise-Scripts/tree/main/Games)
 
 ---
 
