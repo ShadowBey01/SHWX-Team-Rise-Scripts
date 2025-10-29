@@ -35,7 +35,7 @@ Our goal is to provide you with **the best scripting experience** and to always 
 | 💸 100% Free | Rise Script is completely free — no hidden costs. |
 | ⚡ Fast Fixes | Bugs are fixed as soon as possible to keep everything stable. |
 
-> ⚠️ **Note:** SHWX Team is constantly improving Rise Script to ensure top performance and reliability.  
+> 💬 **[Join our Official Discord Server](https://discord.gg/shwx)** — Stay up to date with the latest updates and news!
 
 ---
 
