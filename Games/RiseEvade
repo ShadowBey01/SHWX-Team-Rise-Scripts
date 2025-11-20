@@ -15,4 +15,4 @@
      Discord: dc.gg/shwxteam
 ]]
 
-loadstring(game:HttpGet("https://gist.githubusercontent.com/Cxh4n/cd4b94b8e18c06d3c9dd1f8c2f013ecd/raw/56d12dd9e36f10b03bdad3b8a96c53da21231b3d/rize.lua"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/Cxh4n/cd4b94b8e18c06d3c9dd1f8c2f013ecd/raw/4bcdd47d6caed12168903c9fcecefede5f671c30/rize.lua"))()
