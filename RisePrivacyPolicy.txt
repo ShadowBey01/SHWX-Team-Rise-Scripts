@@ -1,0 +1,72 @@
+Privacy Policy Last Updated: November 17, 2025 Applies to: Rise Key
+System
+
+1.  Introduction This Privacy Policy explains what data we collect, how
+    we use it, and how we protect it. By using our script or key system,
+    you agree to the practices described here.
+
+2.  Data We Collect We may collect the following information:
+
+-   HWID (Hardware ID)
+-   Roblox username
+-   Discord ID (if provided)
+-   Executor name
+-   Script usage timestamps
+-   IP region or general location (if required for security)
+
+We do not collect sensitive data such as passwords or payment
+information.
+
+3.  How We Use the Data Collected data is used for:
+
+-   Verifying users
+-   Ensuring key validity
+-   Preventing abuse, exploits, or blacklisted activity
+-   Maintaining security and system stability
+
+We do not sell or rent user data.
+
+4.  Third-Party Services We use Supabase to store and manage data. Your
+    information may be processed under Supabase’s own Privacy Policy:
+    https://supabase.com/privacy
+
+Only necessary data is transmitted to operate the system.
+
+5.  Data Security We take steps to ensure your data is stored safely,
+    including encrypted storage, limited access, and secured
+    communication. No system is perfect, so by using the script you
+    acknowledge this risk.
+
+6.  Data Sharing Your data may only be shared when:
+
+-   Required by law
+-   Needed to prevent abuse or malicious activity
+-   Necessary to operate the service (e.g., Supabase)
+
+We do not share data with advertisers or unrelated third parties.
+
+7.  Data Retention We retain data as long as needed to:
+
+-   Maintain system integrity
+-   Prevent ban evasion
+-   Comply with legal obligations
+
+Users may request deletion of their data, subject to verification.
+
+8.  User Rights Depending on your region, you may have the right to:
+
+-   Request access to your data
+-   Request correction
+-   Request deletion
+
+You must prove ownership of the HWID or account.
+
+9.  Age Requirement You must be at least 13 years old, or have parental
+    consent if required by law. We do not knowingly collect data from
+    minors under 13 without consent.
+
+10. Updates to This Policy We may update this Privacy Policy at any
+    time. Continued use of the script means you accept any changes.
+
+11. Contact For data deletion requests or questions, contact the
+    developer through the official channels of the script.
