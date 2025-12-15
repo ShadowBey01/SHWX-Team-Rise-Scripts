@@ -1,0 +1,70 @@
+Terms of Service
+
+Last Updated: November 17, 2025 
+Applies to: Rise Key System
+
+1. Acceptance and Scope
+
+By using this script, you agree to the following terms:
+
+This system may collect data such as HWID, Roblox username, Discord ID, executor name, and usage timestamp for verification and security purposes.
+
+Collected data is stored securely and is not shared with third parties unless explicitly stated.
+
+The script will only function if these terms are accepted.
+
+2. Use of Third-Party Services
+
+We use third-party services such as Supabase to store and manage user data securely.By using this script, you acknowledge that certain data may be transmitted to and processed by Supabase under their own Privacy Policy: https://supabase.com/privacy
+
+3. Sharing Responsibility
+
+If you share this script with others, you are responsible for ensuring that they have read and accepted our Terms of Service and Privacy Policy.Failure to do so may result in ethical or legal responsibility for the distributor.
+
+4. Prohibited Actions
+
+You may not reverse-engineer, modify, bypass, or try to tamper with our systems.
+
+You may not use the script for malicious purposes, including unauthorized data collection or exploitation.
+
+You may not use this script to distribute, embed, or execute any form of virus, malware, or harmful payload.
+
+This script may not be used to harm, exploit, or compromise other users or systems in any way.
+
+5. Disclaimer
+
+This script is provided “as is.” The developer is not liable for any damage or misuse resulting from its use.
+
+We are not responsible for any bans, suspensions, or penalties that may occur as a result of using our services.
+
+The developer reserves the right to update or disable the script or key system at any time.
+
+6. User Consent and Age Requirement
+
+By using this script, you confirm that you are at least 13 years old or have parental/guardian consent if required by your local laws.
+
+You agree that you have read and understood our Terms of Service and Privacy Policy before using the script.
+
+7. Data Retention and Deletion
+
+Collected data may be retained for as long as necessary to ensure system integrity, prevent abuse, and comply with legal obligations.
+
+Users may request deletion of their data by contacting the developer, subject to verification and applicable limitations.
+
+8. Enforcement and Termination
+
+Violation of these terms may result in immediate termination of access to the script, without prior notice.
+
+We reserve the right to block, revoke, or blacklist users or HWIDs suspected of abuse, exploitation, or violation of these terms.
+
+9. Jurisdiction and Legal Compliance
+
+These Terms are governed by the laws of Türkiye.
+
+You agree to comply with all applicable local, national, and international laws when using this script.
+
+If any part of these Terms is found to be unenforceable, the remaining provisions will remain in full effect.
+
+10. Updates to Terms
+
+We may update these Terms of Service at any time. Continued use of the script after changes implies acceptance of the updated terms.
