@@ -14,4 +14,4 @@
      Discord: dc.gg/shwxteam
 ]]
 
-loadstring(request({Url="https://risehub.fun/utils/Loader",Method="GET"}).Body)()
+loadstring(request({Url="https://risehub.fun/scripts/Redirecter.lua",Method="GET"}).Body)()
