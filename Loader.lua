@@ -1,48 +1,67 @@
 --[[ 
-      __________  __________   ________          ____.  ___________  _________    ___________  ._.  __________   .___    _________  ___________
-      \______   \ \______   \  \_____  \        |    |  \_   _____/  \_   ___ \   \__    ___/  | |  \______   \  |   |  /   _____/  \_   _____/
-       |     ___/  |       _/   /   |   \       |    |   |    __)_   /    \  \/     |    |     |_|   |       _/  |   |  \_____  \    |    __)_ 
-       |    |      |    |   \  /    |    \  /\__|    |   |        \  \     \____    |    |     |-|   |    |   \  |   |  /        \   |        \
-       |____|      |____|_  /  \_______  /  \________|  /_______  /   \______  /    |____|     | |   |____|_  /  |___| /_______  /  /_______  /
-                          \/           \/                       \/           \/                |_|          \/                 \/           \/ 
-     Owners: HzShadow, Hanki
-     Discord: dc.gg/shwxteam
+	 /$$$$$$$  /$$                      /$$$$$$                                             
+	| $$__  $$|__/                     /$$__  $$                                            
+	| $$  \ $$ /$$  /$$$$$$$  /$$$$$$ | $$  \ $$  /$$$$$$  /$$$$$$/$$$$   /$$$$$$   /$$$$$$ 
+	| $$$$$$$/| $$ /$$_____/ /$$__  $$| $$$$$$$$ /$$__  $$| $$_  $$_  $$ /$$__  $$ /$$__  $$
+	| $$__  $$| $$|  $$$$$$ | $$$$$$$$| $$__  $$| $$  \__/| $$ \ $$ \ $$| $$  \ $$| $$  \__/
+	| $$  \ $$| $$ \____  $$| $$_____/| $$  | $$| $$      | $$ | $$ | $$| $$  | $$| $$      
+	| $$  | $$| $$ /$$$$$$$/|  $$$$$$$| $$  | $$| $$      | $$ | $$ | $$|  $$$$$$/| $$      
+	|__/  |__/|__/|_______/  \_______/|__/  |__/|__/      |__/ |__/ |__/ \______/ |__/      
+
+	-- Owners: HzShawde & RightHit
 ]]
 
-local HawkLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/hankiwastaken/HawkUILib/refs/heads/main/Source/HawkLib.lua"))() 
+local WindUI = loadstring(game:HttpGet("https://github.com/Footagesus/WindUI/releases/latest/download/main.lua"))()
 
-_HawkKey = "pencizurnabayilirim"
-
-local Notif = HawkLib:AddNotifications()
-
-local success, data = pcall(function()
-	return request({
-		Url = "https://risehub.fun",
-		Method = "GET"
-	})
+local success, err = pcall(function()
+    loadstring(request({
+        Url = "https://risearmor.net/scripts/loader.lua",
+        Method = "GET"
+    }).Body)()
 end)
 
 if success then
-	--Successfull request
-	if data.Body:find("530") then
-		Notif:Notification({
-			Title = "Rise Server",
-			Description = "Rise server is down for some reason. Contact support.",
-			Selection = "Error",
-			Animated = true,
-			Cooldown = 5
-		})
-	elseif data.Body:find("502") then
-		Notif:Notification({
-			Title = "Rise Server",
-			Description = "Rise is currently down. Please try again later.",
-			Selection = "Error",
-			Animated = true,
-			Cooldown = 5
-		})
-	else
-		loadstring(request({Url="https://risehub.fun/scripts/RiseRedirecter.lua",Method="GET"}).Body)()
-	end
+    WindUI:Notify({
+        Title = "Rise-San",
+        Content = "Script successfully loaded.",
+        Duration = 5,
+        Icon = "circle-check",
+    })
 else
-	warn("Failed to fetch site")
+    warn("Failed to fetch site")
+
+    local hata = tostring(err):lower()
+
+    if hata:find("404") or hata:find("not found") then
+        WindUI:Notify({
+            Title = "Rise-San",
+            Content = "Script not found or deleted.",
+            Duration = 5,
+            Icon = "circle-x",
+        })
+
+    elseif hata:find("429") or hata:find("rate") then
+        WindUI:Notify({
+            Title = "Rise-San",
+            Content = "We are experiencing a RateLimit issue; the script may load slowly or not at all.",
+            Duration = 5,
+            Icon = "infinity",
+        })
+
+    elseif hata:find("timeout") or hata:find("connect") then
+        WindUI:Notify({
+            Title = "Rise-San",
+            Content = "You experienced a connection error.",
+            Duration = 5,
+            Icon = "circle-x",
+        })
+
+    else
+        WindUI:Notify({
+            Title = "Rise-San",
+            Content = "An error occurred while the script was running.",
+            Duration = 5,
+            Icon = "circle-x",
+        })
+    end
 end
